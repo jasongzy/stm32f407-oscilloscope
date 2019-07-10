@@ -34,7 +34,7 @@
 #include "usart.h"
 #include "led.h"
 #include "lcd.h"
-#include "dac.h"
+//#include "dac.h"
 #include "adc.h"
 #include "waveform.h"
 #include "timer.h"

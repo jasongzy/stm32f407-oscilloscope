@@ -2959,7 +2959,25 @@ void LCD_ShowString(u16 x,u16 y,u16 width,u16 height,u8 size,u8 *p)
     }  
 }
 
+void LCD_ShowFloat(u16 x, u16 y, float num)
+{
+	u16 temp;
+	temp=num;
+	LCD_ShowxNum(x,y,temp,2,12,1);	//显示N个整数部分
+	LCD_ShowChar(x+12,y,'.',12,1);		//显示小数点
+	temp=((num-temp)*100);
+	LCD_ShowxNum(x+18,y,temp,2,12,1);	//显示小数部分
+}
 
+void LCD_ShowData(float Vmax,float Vmin,float Vpp)
+{
+	LCD_ShowString(0,201,66,12,12,"Vmax=     V");
+	LCD_ShowFloat(30,201,Vmax);
+	LCD_ShowString(84,201,66,12,12,"Vmin=     V");
+	LCD_ShowFloat(114,201,Vmin);
+	LCD_ShowString(156,201,66,12,12,"Vpp=     V");
+	LCD_ShowFloat(180,201,Vpp);
+}
 
 
 

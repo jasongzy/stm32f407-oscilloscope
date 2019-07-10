@@ -26,7 +26,7 @@
     <ToolsetNumber>0x4</ToolsetNumber>
     <ToolsetName>ARM-ADS</ToolsetName>
     <TargetOption>
-      <CLKADS>8000000</CLKADS>
+      <CLKADS>168000000</CLKADS>
       <OPTTT>
         <gFlags>1</gFlags>
         <BeepAtEnd>1</BeepAtEnd>
@@ -81,38 +81,38 @@
       <Books>
         <Book>
           <Number>0</Number>
-          <Title>User Manual (MCBSTM32F400)</Title>
-          <Path>D:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.5.0\MDK/Boards/Keil/MCBSTM32F400/Documentation/mcbstm32f200.chm</Path>
+          <Title>Getting Started (STM32F4-Discovery)</Title>
+          <Path>F:\STM32F103Mini\MDK5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Documents\DM00037368.pdf</Path>
         </Book>
         <Book>
           <Number>1</Number>
-          <Title>Schematics (MCBSTM32F400)</Title>
-          <Path>D:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.5.0\MDK/Boards/Keil/MCBSTM32F400/Documentation/mcbstm32f400-schematics.pdf</Path>
+          <Title>User Manual (STM32F4-Discovery)</Title>
+          <Path>F:\STM32F103Mini\MDK5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Documents\DM00039084.pdf</Path>
         </Book>
         <Book>
           <Number>2</Number>
-          <Title>Getting Started (STM32F4-Discovery)</Title>
-          <Path>D:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.5.0\MDK/Boards/ST/STM32F4-Discovery/Documentation/DM00037368.pdf</Path>
+          <Title>User Manual (MCBSTM32F400)</Title>
+          <Path>F:\STM32F103Mini\MDK5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Documents\mcbstm32f200.chm</Path>
         </Book>
         <Book>
           <Number>3</Number>
-          <Title>User Manual (STM32F4-Discovery)</Title>
-          <Path>D:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.5.0\MDK/Boards/ST/STM32F4-Discovery/Documentation/DM00039084.pdf</Path>
+          <Title>Schematics (MCBSTM32F400)</Title>
+          <Path>F:\STM32F103Mini\MDK5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Documents\mcbstm32f400-schematics.pdf</Path>
         </Book>
         <Book>
           <Number>4</Number>
           <Title>Bill of Materials (STM32F4-Discovery)</Title>
-          <Path>D:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.5.0\MDK/Boards/ST/STM32F4-Discovery/Documentation/stm32f4discovery_bom.zip</Path>
+          <Path>F:\STM32F103Mini\MDK5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Documents\stm32f4discovery_bom.zip</Path>
         </Book>
         <Book>
           <Number>5</Number>
           <Title>Gerber Files (STM32F4-Discovery)</Title>
-          <Path>D:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.5.0\MDK/Boards/ST/STM32F4-Discovery/Documentation/stm32f4discovery_gerber.zip</Path>
+          <Path>F:\STM32F103Mini\MDK5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Documents\stm32f4discovery_gerber.zip</Path>
         </Book>
         <Book>
           <Number>6</Number>
           <Title>Schematics (STM32F4-Discovery)</Title>
-          <Path>D:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.5.0\MDK/Boards/ST/STM32F4-Discovery/Documentation/stm32f4discovery_sch.zip</Path>
+          <Path>F:\STM32F103Mini\MDK5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Documents\stm32f4discovery_sch.zip</Path>
         </Book>
         <Book>
           <Number>7</Number>
@@ -147,7 +147,7 @@
         <tRSysVw>1</tRSysVw>
         <sRunDeb>0</sRunDeb>
         <sLrtime>0</sLrtime>
-        <nTsel>6</nTsel>
+        <nTsel>11</nTsel>
         <sDll></sDll>
         <sDllPa></sDllPa>
         <sDlgDll></sDlgDll>
@@ -158,33 +158,13 @@
         <tDlgDll></tDlgDll>
         <tDlgPa></tDlgPa>
         <tIfile></tIfile>
-        <pMon>Segger\JL2CM3.dll</pMon>
+        <pMon>STLink\ST-LINKIII-KEIL_SWO.dll</pMon>
       </DebugOpt>
       <TargetDriverDllRegistry>
         <SetRegEntry>
           <Number>0</Number>
-          <Key>DLGUARM</Key>
-          <Name></Name>
-        </SetRegEntry>
-        <SetRegEntry>
-          <Number>0</Number>
-          <Key>ARMRTXEVENTFLAGS</Key>
-          <Name>-L70 -Z18 -C0 -M0 -T1</Name>
-        </SetRegEntry>
-        <SetRegEntry>
-          <Number>0</Number>
-          <Key>DLGTARM</Key>
-          <Name>(1010=-1,-1,-1,-1,0)(1007=-1,-1,-1,-1,0)(1008=-1,-1,-1,-1,0)(1009=-1,-1,-1,-1,0)(1012=-1,-1,-1,-1,0)</Name>
-        </SetRegEntry>
-        <SetRegEntry>
-          <Number>0</Number>
-          <Key>ARMDBGFLAGS</Key>
-          <Name></Name>
-        </SetRegEntry>
-        <SetRegEntry>
-          <Number>0</Number>
-          <Key>JL2CM3</Key>
-          <Name>-U4294967295 -O78 -S1 -A0 -C0 -JU1 -JI127.0.0.1 -JP0 -RST0 -N00("ARM CoreSight SW-DP") -D00(2BA01477) -L00(0) -TO18 -TC10000000 -TP21 -TDS8007 -TDT0 -TDC1F -TIEFFFFFFFF -TIP8 -TB1 -TFE0 -FO15 -FD20000000 -FC1000 -FN1 -FF0STM32F4xx_1024.FLM -FS08000000 -FL0100000 -FP0($$Device:STM32F407ZG$CMSIS/Flash/STM32F4xx_1024.FLM)</Name>
+          <Key>ST-LINKIII-KEIL_SWO</Key>
+          <Name>-U303030303030303030303031 -I0 -O206 -S1 -C0 -A0 -N00("ARM CoreSight SW-DP") -D00(2BA01477) -L00(0) -TO18 -TC10000000 -TP21 -TDS8007 -TDT0 -TDC1F -TIEFFFFFFFF -TIP8 -FO15 -FD20000000 -FC1000 -FN1 -FF0STM32F4xx_1024.FLM -FS08000000 -FL0100000 -FP0($$Device:STM32F407ZG$Flash\STM32F4xx_1024.FLM)</Name>
         </SetRegEntry>
         <SetRegEntry>
           <Number>0</Number>
@@ -193,28 +173,6 @@
         </SetRegEntry>
       </TargetDriverDllRegistry>
       <Breakpoint/>
-      <WatchWindow2>
-        <Ww>
-          <count>0</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>Adresult</ItemText>
-        </Ww>
-        <Ww>
-          <count>1</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>buf,0x0A</ItemText>
-        </Ww>
-        <Ww>
-          <count>2</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>Vpp_buff</ItemText>
-        </Ww>
-        <Ww>
-          <count>3</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>Ypos2,0x0A</ItemText>
-        </Ww>
-      </WatchWindow2>
       <Tracepoint>
         <THDelay>0</THDelay>
       </Tracepoint>
@@ -226,7 +184,7 @@
         <aSer1>0</aSer1>
         <aSer2>0</aSer2>
         <aPa>0</aPa>
-        <viewmode>1</viewmode>
+        <viewmode>0</viewmode>
         <vrSel>0</vrSel>
         <aSym>0</aSym>
         <aTbox>0</aTbox>
@@ -246,16 +204,6 @@
       </DebugFlag>
       <LintExecutable></LintExecutable>
       <LintConfigFile></LintConfigFile>
-      <SystemViewers>
-        <Entry>
-          <Name>System Viewer\ADC1</Name>
-          <WinId>35904</WinId>
-        </Entry>
-        <Entry>
-          <Name>System Viewer\DMA2</Name>
-          <WinId>35905</WinId>
-        </Entry>
-      </SystemViewers>
     </TargetOption>
   </Target>
 
@@ -359,8 +307,8 @@
       <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\HARDWARE\DAC\dac.c</PathWithFileName>
-      <FilenameWithoutPath>dac.c</FilenameWithoutPath>
+      <PathWithFileName>..\HARDWARE\ADC\adc.c</PathWithFileName>
+      <FilenameWithoutPath>adc.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -372,8 +320,8 @@
       <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\HARDWARE\ADC\adc.c</PathWithFileName>
-      <FilenameWithoutPath>adc.c</FilenameWithoutPath>
+      <PathWithFileName>..\HARDWARE\TIMER\timer.c</PathWithFileName>
+      <FilenameWithoutPath>timer.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -385,8 +333,8 @@
       <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\HARDWARE\TIMER\timer.c</PathWithFileName>
-      <FilenameWithoutPath>timer.c</FilenameWithoutPath>
+      <PathWithFileName>..\HARDWARE\KEY\key.c</PathWithFileName>
+      <FilenameWithoutPath>key.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -394,7 +342,7 @@
 
   <Group>
     <GroupName>SYSTEM</GroupName>
-    <tvExp>1</tvExp>
+    <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -441,7 +389,7 @@
 
   <Group>
     <GroupName>CORE</GroupName>
-    <tvExp>1</tvExp>
+    <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -462,7 +410,7 @@
 
   <Group>
     <GroupName>FWLIB</GroupName>
-    <tvExp>1</tvExp>
+    <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
