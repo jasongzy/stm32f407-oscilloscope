@@ -4,54 +4,54 @@
 #include "stdlib.h" 
 
 
-//LCDÖØÒª²ÎÊı¼¯
+//LCDé‡è¦å‚æ•°é›†
 typedef struct  
 {										    
-	u16 width;			//LCD ¿í¶È
-	u16 height;			//LCD ¸ß¶È
+	u16 width;			//LCD å®½åº¦
+	u16 height;			//LCD é«˜åº¦
 	u16 id;				//LCD ID
-	u8  dir;			//ºáÆÁ»¹ÊÇÊúÆÁ¿ØÖÆ£º0£¬ÊúÆÁ£»1£¬ºáÆÁ¡£	
-	u16	wramcmd;		//¿ªÊ¼Ğ´gramÖ¸Áî
-	u16  setxcmd;		//ÉèÖÃx×ø±êÖ¸Áî
-	u16  setycmd;		//ÉèÖÃy×ø±êÖ¸Áî 
+	u8  dir;			//æ¨ªå±è¿˜æ˜¯ç«–å±æ§åˆ¶ï¼š0ï¼Œç«–å±ï¼›1ï¼Œæ¨ªå±ã€‚	
+	u16	wramcmd;		//å¼€å§‹å†™gramæŒ‡ä»¤
+	u16  setxcmd;		//è®¾ç½®xåæ ‡æŒ‡ä»¤
+	u16  setycmd;		//è®¾ç½®yåæ ‡æŒ‡ä»¤ 
 }_lcd_dev; 	  
 
-//LCD²ÎÊı
-extern _lcd_dev lcddev;	//¹ÜÀíLCDÖØÒª²ÎÊı
-//LCDµÄ»­±ÊÑÕÉ«ºÍ±³¾°É«	   
-extern u16  POINT_COLOR;//Ä¬ÈÏºìÉ«    
-extern u16  BACK_COLOR; //±³¾°ÑÕÉ«.Ä¬ÈÏÎª°×É«
+//LCDå‚æ•°
+extern _lcd_dev lcddev;	//ç®¡ç†LCDé‡è¦å‚æ•°
+//LCDçš„ç”»ç¬”é¢œè‰²å’ŒèƒŒæ™¯è‰²	   
+extern u16  POINT_COLOR;//é»˜è®¤çº¢è‰²    
+extern u16  BACK_COLOR; //èƒŒæ™¯é¢œè‰².é»˜è®¤ä¸ºç™½è‰²
 
 
 //////////////////////////////////////////////////////////////////////////////////	 
-//-----------------LCD¶Ë¿Ú¶¨Òå---------------- 
-#define	LCD_LED PBout(15)  		//LCD±³¹â    		 PB15 	    
-//LCDµØÖ·½á¹¹Ìå
+//-----------------LCDç«¯å£å®šä¹‰---------------- 
+#define	LCD_LED PBout(15)  		//LCDèƒŒå…‰    		 PB15 	    
+//LCDåœ°å€ç»“æ„ä½“
 typedef struct
 {
 	vu16 LCD_REG;
 	vu16 LCD_RAM;
 } LCD_TypeDef;
-//Ê¹ÓÃNOR/SRAMµÄ Bank1.sector4,µØÖ·Î»HADDR[27,26]=11 A6×÷ÎªÊı¾İÃüÁîÇø·ÖÏß 
-//×¢ÒâÉèÖÃÊ±STM32ÄÚ²¿»áÓÒÒÆÒ»Î»¶ÔÆä! 111 1110=0X7E			    
+//ä½¿ç”¨NOR/SRAMçš„ Bank1.sector4,åœ°å€ä½HADDR[27,26]=11 A6ä½œä¸ºæ•°æ®å‘½ä»¤åŒºåˆ†çº¿ 
+//æ³¨æ„è®¾ç½®æ—¶STM32å†…éƒ¨ä¼šå³ç§»ä¸€ä½å¯¹å…¶! 111 1110=0X7E			    
 #define LCD_BASE        ((u32)(0x6C000000 | 0x0000007E))
 #define LCD             ((LCD_TypeDef *) LCD_BASE)
 //////////////////////////////////////////////////////////////////////////////////
 	 
-//É¨Ãè·½Ïò¶¨Òå
-#define L2R_U2D  0 //´Ó×óµ½ÓÒ,´ÓÉÏµ½ÏÂ
-#define L2R_D2U  1 //´Ó×óµ½ÓÒ,´ÓÏÂµ½ÉÏ
-#define R2L_U2D  2 //´ÓÓÒµ½×ó,´ÓÉÏµ½ÏÂ
-#define R2L_D2U  3 //´ÓÓÒµ½×ó,´ÓÏÂµ½ÉÏ
+//æ‰«ææ–¹å‘å®šä¹‰
+#define L2R_U2D  0 //ä»å·¦åˆ°å³,ä»ä¸Šåˆ°ä¸‹
+#define L2R_D2U  1 //ä»å·¦åˆ°å³,ä»ä¸‹åˆ°ä¸Š
+#define R2L_U2D  2 //ä»å³åˆ°å·¦,ä»ä¸Šåˆ°ä¸‹
+#define R2L_D2U  3 //ä»å³åˆ°å·¦,ä»ä¸‹åˆ°ä¸Š
 
-#define U2D_L2R  4 //´ÓÉÏµ½ÏÂ,´Ó×óµ½ÓÒ
-#define U2D_R2L  5 //´ÓÉÏµ½ÏÂ,´ÓÓÒµ½×ó
-#define D2U_L2R  6 //´ÓÏÂµ½ÉÏ,´Ó×óµ½ÓÒ
-#define D2U_R2L  7 //´ÓÏÂµ½ÉÏ,´ÓÓÒµ½×ó	 
+#define U2D_L2R  4 //ä»ä¸Šåˆ°ä¸‹,ä»å·¦åˆ°å³
+#define U2D_R2L  5 //ä»ä¸Šåˆ°ä¸‹,ä»å³åˆ°å·¦
+#define D2U_L2R  6 //ä»ä¸‹åˆ°ä¸Š,ä»å·¦åˆ°å³
+#define D2U_R2L  7 //ä»ä¸‹åˆ°ä¸Š,ä»å³åˆ°å·¦	 
 
-#define DFT_SCAN_DIR  L2R_U2D  //Ä¬ÈÏµÄÉ¨Ãè·½Ïò
+#define DFT_SCAN_DIR  L2R_U2D  //é»˜è®¤çš„æ‰«ææ–¹å‘
 
-//»­±ÊÑÕÉ«
+//ç”»ç¬”é¢œè‰²
 #define WHITE         	 0xFFFF
 #define BLACK         	 0x0000	  
 #define BLUE         	 0x001F  
@@ -63,63 +63,63 @@ typedef struct
 #define GREEN         	 0x07E0
 #define CYAN          	 0x7FFF
 #define YELLOW        	 0xFFE0
-#define BROWN 			 0XBC40 //×ØÉ«
-#define BRRED 			 0XFC07 //×ØºìÉ«
-#define GRAY  			 0X8430 //»ÒÉ«
-//GUIÑÕÉ«
+#define BROWN 			 0XBC40 //æ£•è‰²
+#define BRRED 			 0XFC07 //æ£•çº¢è‰²
+#define GRAY  			 0X8430 //ç°è‰²
+//GUIé¢œè‰²
 
-#define DARKBLUE      	 0X01CF	//ÉîÀ¶É«
-#define LIGHTBLUE      	 0X7D7C	//Ç³À¶É«  
-#define GRAYBLUE       	 0X5458 //»ÒÀ¶É«
-//ÒÔÉÏÈıÉ«ÎªPANELµÄÑÕÉ« 
+#define DARKBLUE      	 0X01CF	//æ·±è“è‰²
+#define LIGHTBLUE      	 0X7D7C	//æµ…è“è‰²  
+#define GRAYBLUE       	 0X5458 //ç°è“è‰²
+//ä»¥ä¸Šä¸‰è‰²ä¸ºPANELçš„é¢œè‰² 
  
-#define LIGHTGREEN     	 0X841F //Ç³ÂÌÉ«
-//#define LIGHTGRAY        0XEF5B //Ç³»ÒÉ«(PANNEL)
-#define LGRAY 			 0XC618 //Ç³»ÒÉ«(PANNEL),´°Ìå±³¾°É«
+#define LIGHTGREEN     	 0X841F //æµ…ç»¿è‰²
+//#define LIGHTGRAY        0XEF5B //æµ…ç°è‰²(PANNEL)
+#define LGRAY 			 0XC618 //æµ…ç°è‰²(PANNEL),çª—ä½“èƒŒæ™¯è‰²
 
-#define LGRAYBLUE        0XA651 //Ç³»ÒÀ¶É«(ÖĞ¼ä²ãÑÕÉ«)
-#define LBBLUE           0X2B12 //Ç³×ØÀ¶É«(Ñ¡ÔñÌõÄ¿µÄ·´É«)    															  
-void LCD_Init(void);													   	//³õÊ¼»¯
-void LCD_DisplayOn(void);													//¿ªÏÔÊ¾
-void LCD_DisplayOff(void);													//¹ØÏÔÊ¾
-void LCD_Clear(u16 Color);	 												//ÇåÆÁ
-void LCD_SetCursor(u16 Xpos, u16 Ypos);										//ÉèÖÃ¹â±ê
-void LCD_DrawPoint(u16 x,u16 y);											//»­µã
-void LCD_Fast_DrawPoint(u16 x,u16 y,u16 color);								//¿ìËÙ»­µã
-u16  LCD_ReadPoint(u16 x,u16 y); 											//¶Áµã 
-void LCD_Draw_Circle(u16 x0,u16 y0,u8 r);						 			//»­Ô²
-void LCD_DrawLine(u16 x1, u16 y1, u16 x2, u16 y2);							//»­Ïß
-void LCD_DrawRectangle(u16 x1, u16 y1, u16 x2, u16 y2);		   				//»­¾ØĞÎ
-void LCD_Fill(u16 sx,u16 sy,u16 ex,u16 ey,u16 color);		   				//Ìî³äµ¥É«
-void LCD_Color_Fill(u16 sx,u16 sy,u16 ex,u16 ey,u16 *color);				//Ìî³äÖ¸¶¨ÑÕÉ«
-void LCD_ShowChar(u16 x,u16 y,u8 num,u8 size,u8 mode);						//ÏÔÊ¾Ò»¸ö×Ö·û
-void LCD_ShowNum(u16 x,u16 y,u32 num,u8 len,u8 size);  						//ÏÔÊ¾Ò»¸öÊı×Ö
-void LCD_ShowxNum(u16 x,u16 y,u32 num,u8 len,u8 size,u8 mode);				//ÏÔÊ¾ Êı×Ö
-void LCD_ShowString(u16 x,u16 y,u16 width,u16 height,u8 size,u8 *p);		//ÏÔÊ¾Ò»¸ö×Ö·û´®,12/16×ÖÌå
+#define LGRAYBLUE        0XA651 //æµ…ç°è“è‰²(ä¸­é—´å±‚é¢œè‰²)
+#define LBBLUE           0X2B12 //æµ…æ£•è“è‰²(é€‰æ‹©æ¡ç›®çš„åè‰²)    															  
+void LCD_Init(void);													   	//åˆå§‹åŒ–
+void LCD_DisplayOn(void);													//å¼€æ˜¾ç¤º
+void LCD_DisplayOff(void);													//å…³æ˜¾ç¤º
+void LCD_Clear(u16 Color);	 												//æ¸…å±
+void LCD_SetCursor(u16 Xpos, u16 Ypos);										//è®¾ç½®å…‰æ ‡
+void LCD_DrawPoint(u16 x,u16 y);											//ç”»ç‚¹
+void LCD_Fast_DrawPoint(u16 x,u16 y,u16 color);								//å¿«é€Ÿç”»ç‚¹
+u16  LCD_ReadPoint(u16 x,u16 y); 											//è¯»ç‚¹ 
+void LCD_Draw_Circle(u16 x0,u16 y0,u8 r);						 			//ç”»åœ†
+void LCD_DrawLine(u16 x1, u16 y1, u16 x2, u16 y2);							//ç”»çº¿
+void LCD_DrawRectangle(u16 x1, u16 y1, u16 x2, u16 y2);		   				//ç”»çŸ©å½¢
+void LCD_Fill(u16 sx,u16 sy,u16 ex,u16 ey,u16 color);		   				//å¡«å……å•è‰²
+void LCD_Color_Fill(u16 sx,u16 sy,u16 ex,u16 ey,u16 *color);				//å¡«å……æŒ‡å®šé¢œè‰²
+void LCD_ShowChar(u16 x,u16 y,u8 num,u8 size,u8 mode);						//æ˜¾ç¤ºä¸€ä¸ªå­—ç¬¦
+void LCD_ShowNum(u16 x,u16 y,u32 num,u8 len,u8 size);  						//æ˜¾ç¤ºä¸€ä¸ªæ•°å­—
+void LCD_ShowxNum(u16 x,u16 y,u32 num,u8 len,u8 size,u8 mode);				//æ˜¾ç¤º æ•°å­—
+void LCD_ShowString(u16 x,u16 y,u16 width,u16 height,u8 size,u8 *p);		//æ˜¾ç¤ºä¸€ä¸ªå­—ç¬¦ä¸²,12/16å­—ä½“
 
 void LCD_WriteReg(u16 LCD_Reg, u16 LCD_RegValue);
 u16 LCD_ReadReg(u16 LCD_Reg);
 void LCD_WriteRAM_Prepare(void);
 void LCD_WriteRAM(u16 RGB_Code);
-void LCD_SSD_BackLightSet(u8 pwm);							//SSD1963 ±³¹â¿ØÖÆ
-void LCD_Scan_Dir(u8 dir);									//ÉèÖÃÆÁÉ¨Ãè·½Ïò
-void LCD_Display_Dir(u8 dir);								//ÉèÖÃÆÁÄ»ÏÔÊ¾·½Ïò
-void LCD_Set_Window(u16 sx,u16 sy,u16 width,u16 height);	//ÉèÖÃ´°¿Ú				
+void LCD_SSD_BackLightSet(u8 pwm);							//SSD1963 èƒŒå…‰æ§åˆ¶
+void LCD_Scan_Dir(u8 dir);									//è®¾ç½®å±æ‰«ææ–¹å‘
+void LCD_Display_Dir(u8 dir);								//è®¾ç½®å±å¹•æ˜¾ç¤ºæ–¹å‘
+void LCD_Set_Window(u16 sx,u16 sy,u16 width,u16 height);	//è®¾ç½®çª—å£				
 void LCD_ShowData(float Vmax,float Vmin,float Vpp);
 void LCD_ShowFloat(u16 x, u16 y, float num);
 
-//LCD·Ö±æÂÊÉèÖÃ
-#define SSD_HOR_RESOLUTION		800		//LCDË®Æ½·Ö±æÂÊ
-#define SSD_VER_RESOLUTION		480		//LCD´¹Ö±·Ö±æÂÊ
-//LCDÇı¶¯²ÎÊıÉèÖÃ
-#define SSD_HOR_PULSE_WIDTH		1		//Ë®Æ½Âö¿í
-#define SSD_HOR_BACK_PORCH		46		//Ë®Æ½Ç°ÀÈ
-#define SSD_HOR_FRONT_PORCH		210		//Ë®Æ½ºóÀÈ
+//LCDåˆ†è¾¨ç‡è®¾ç½®
+#define SSD_HOR_RESOLUTION		800		//LCDæ°´å¹³åˆ†è¾¨ç‡
+#define SSD_VER_RESOLUTION		480		//LCDå‚ç›´åˆ†è¾¨ç‡
+//LCDé©±åŠ¨å‚æ•°è®¾ç½®
+#define SSD_HOR_PULSE_WIDTH		1		//æ°´å¹³è„‰å®½
+#define SSD_HOR_BACK_PORCH		46		//æ°´å¹³å‰å»Š
+#define SSD_HOR_FRONT_PORCH		210		//æ°´å¹³åå»Š
 
-#define SSD_VER_PULSE_WIDTH		1		//´¹Ö±Âö¿í
-#define SSD_VER_BACK_PORCH		23		//´¹Ö±Ç°ÀÈ
-#define SSD_VER_FRONT_PORCH		22		//´¹Ö±Ç°ÀÈ
-//ÈçÏÂ¼¸¸ö²ÎÊı£¬×Ô¶¯¼ÆËã
+#define SSD_VER_PULSE_WIDTH		1		//å‚ç›´è„‰å®½
+#define SSD_VER_BACK_PORCH		23		//å‚ç›´å‰å»Š
+#define SSD_VER_FRONT_PORCH		22		//å‚ç›´å‰å»Š
+//å¦‚ä¸‹å‡ ä¸ªå‚æ•°ï¼Œè‡ªåŠ¨è®¡ç®—
 #define SSD_HT	(SSD_HOR_RESOLUTION+SSD_HOR_BACK_PORCH+SSD_HOR_FRONT_PORCH)
 #define SSD_HPS	(SSD_HOR_BACK_PORCH)
 #define SSD_VT 	(SSD_VER_RESOLUTION+SSD_VER_BACK_PORCH+SSD_VER_FRONT_PORCH)

@@ -1,50 +1,50 @@
 //#include "dac.h"
 ////////////////////////////////////////////////////////////////////////////////////	 
-////±¾³ÌĞòÖ»¹©Ñ§Ï°Ê¹ÓÃ£¬Î´¾­×÷ÕßĞí¿É£¬²»µÃÓÃÓÚÆäËüÈÎºÎÓÃÍ¾
-////ALIENTEK STM32F407¿ª·¢°å
-////DAC Çı¶¯´úÂë	   
-////ÕıµãÔ­×Ó@ALIENTEK
-////¼¼ÊõÂÛÌ³:www.openedv.com
-////´´½¨ÈÕÆÚ:2014/5/6
-////°æ±¾£ºV1.0
-////°æÈ¨ËùÓĞ£¬µÁ°æ±Ø¾¿¡£
-////Copyright(C) ¹ãÖİÊĞĞÇÒíµç×Ó¿Æ¼¼ÓĞÏŞ¹«Ë¾ 2014-2024
+////æœ¬ç¨‹åºåªä¾›å­¦ä¹ ä½¿ç”¨ï¼Œæœªç»ä½œè€…è®¸å¯ï¼Œä¸å¾—ç”¨äºå…¶å®ƒä»»ä½•ç”¨é€”
+////ALIENTEK STM32F407å¼€å‘æ¿
+////DAC é©±åŠ¨ä»£ç 	   
+////æ­£ç‚¹åŸå­@ALIENTEK
+////æŠ€æœ¯è®ºå›:www.openedv.com
+////åˆ›å»ºæ—¥æœŸ:2014/5/6
+////ç‰ˆæœ¬ï¼šV1.0
+////ç‰ˆæƒæ‰€æœ‰ï¼Œç›—ç‰ˆå¿…ç©¶ã€‚
+////Copyright(C) å¹¿å·å¸‚æ˜Ÿç¿¼ç”µå­ç§‘æŠ€æœ‰é™å…¬å¸ 2014-2024
 ////All rights reserved 
 //////////////////////////////////////////////////////////////////////////////////// 	
 // 
 
-////DACÍ¨µÀ1Êä³ö³õÊ¼»¯
+////DACé€šé“1è¾“å‡ºåˆå§‹åŒ–
 //void Dac1_Init(void)
 //{  
 //  GPIO_InitTypeDef  GPIO_InitStructure;
 //	DAC_InitTypeDef DAC_InitType;
 //	
-//  RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOA, ENABLE);//Ê¹ÄÜGPIOAÊ±ÖÓ
-//  RCC_APB1PeriphClockCmd(RCC_APB1Periph_DAC, ENABLE);//Ê¹ÄÜDACÊ±ÖÓ
+//  RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOA, ENABLE);//ä½¿èƒ½GPIOAæ—¶é’Ÿ
+//  RCC_APB1PeriphClockCmd(RCC_APB1Periph_DAC, ENABLE);//ä½¿èƒ½DACæ—¶é’Ÿ
 //	   
 //  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_4;//4
-//  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AN;//Ä£ÄâÊäÈë
-//  GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_DOWN;//ÏÂÀ­
-//  GPIO_Init(GPIOA, &GPIO_InitStructure);//³õÊ¼»¯
+//  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AN;//æ¨¡æ‹Ÿè¾“å…¥
+//  GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_DOWN;//ä¸‹æ‹‰
+//  GPIO_Init(GPIOA, &GPIO_InitStructure);//åˆå§‹åŒ–
 
-//	DAC_InitType.DAC_Trigger=DAC_Trigger_None;	//²»Ê¹ÓÃ´¥·¢¹¦ÄÜ TEN1=0
-//	DAC_InitType.DAC_WaveGeneration=DAC_WaveGeneration_Noise;//²»Ê¹ÓÃ²¨ĞÎ·¢Éú
-//	DAC_InitType.DAC_LFSRUnmask_TriangleAmplitude=DAC_LFSRUnmask_Bit0;//ÆÁ±Î¡¢·ùÖµÉèÖÃ
-//	DAC_InitType.DAC_OutputBuffer=DAC_OutputBuffer_Disable ;	//DAC1Êä³ö»º´æ¹Ø±Õ BOFF1=1
-//  DAC_Init(DAC_Channel_1,&DAC_InitType);	 //³õÊ¼»¯DACÍ¨µÀ1
+//	DAC_InitType.DAC_Trigger=DAC_Trigger_None;	//ä¸ä½¿ç”¨è§¦å‘åŠŸèƒ½ TEN1=0
+//	DAC_InitType.DAC_WaveGeneration=DAC_WaveGeneration_Noise;//ä¸ä½¿ç”¨æ³¢å½¢å‘ç”Ÿ
+//	DAC_InitType.DAC_LFSRUnmask_TriangleAmplitude=DAC_LFSRUnmask_Bit0;//å±è”½ã€å¹…å€¼è®¾ç½®
+//	DAC_InitType.DAC_OutputBuffer=DAC_OutputBuffer_Disable ;	//DAC1è¾“å‡ºç¼“å­˜å…³é—­ BOFF1=1
+//  DAC_Init(DAC_Channel_1,&DAC_InitType);	 //åˆå§‹åŒ–DACé€šé“1
 
-//	DAC_Cmd(DAC_Channel_1, ENABLE);  //Ê¹ÄÜDACÍ¨µÀ1
+//	DAC_Cmd(DAC_Channel_1, ENABLE);  //ä½¿èƒ½DACé€šé“1
 //  
-//  DAC_SetChannel1Data(DAC_Align_12b_R, 0);  //12Î»ÓÒ¶ÔÆëÊı¾İ¸ñÊ½ÉèÖÃDACÖµ
+//  DAC_SetChannel1Data(DAC_Align_12b_R, 0);  //12ä½å³å¯¹é½æ•°æ®æ ¼å¼è®¾ç½®DACå€¼
 //}
-////ÉèÖÃÍ¨µÀ1Êä³öµçÑ¹
-////vol:0~3300,´ú±í0~3.3V
+////è®¾ç½®é€šé“1è¾“å‡ºç”µå‹
+////vol:0~3300,ä»£è¡¨0~3.3V
 //void Dac1_Set_Vol(u16 vol)
 //{
 //	double temp=vol;
 //	temp/=1000;
 //	temp=temp*4096/3.3;
-//	DAC_SetChannel1Data(DAC_Align_12b_R,temp);//12Î»ÓÒ¶ÔÆëÊı¾İ¸ñÊ½ÉèÖÃDACÖµ
+//	DAC_SetChannel1Data(DAC_Align_12b_R,temp);//12ä½å³å¯¹é½æ•°æ®æ ¼å¼è®¾ç½®DACå€¼
 //}
 
 

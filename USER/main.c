@@ -1,17 +1,17 @@
-                    //STM32 Ê¹ÓÃDMA+DAC+TIMERÊä³öÕıÏÒ²¨//
+                    //STM32 ä½¿ç”¨DMA+DAC+TIMERè¾“å‡ºæ­£å¼¦æ³¢//
 
 /* 
 
-          ÄÇÃ´¶ÔÓÚÊ¹ÓÃDMA+DAC+TIMER²úÉúÕıÏÒ²¨µÄÔ­Àí»ò¹ı³Ì£¬ÎÒÓĞÕâÑùÒ»¸ö¼òµ¥µÄÀí½â£º
-      ÏÈ½«Ò»¸ö¿ÉÒÔÉú³ÉÕıÏÒ²¨µÄÊı¾İ±í±£´æÔÚ¾²Ì¬ÄÚ´æÖĞ£¬È»ºóÔÚDACÒÔ¼°Õâ¿éÄÚ´æÖĞ¼äÊ¹
-      ÓÃDMA½¨Á¢Ò»¸öÍ¨µÀ£¬¾­¹ıÒÔÉÏ²½ÖèÖ®ºó£¬DACÄ£¿é¾Í¿ÉÒÔÍ¨¹ıDMAÍ¨µÀÄÃÈ¡¾²Ì¬ÄÚ´æÖĞ
-      ¿ÉÒÔÉú³ÉÕıÏÒ²¨µÄÊı¾İ£¬ÄÃÈ¡Êı¾İ£¬È»ºó¾­¹ıÊıÄ£×¼»»£¬ÔÚÒı½Å½øĞĞÊä³ö¾Í¿ÉÒÔµÃµ½Õı
-      ÏÒ²¨ÁË¡£ÄÇÃ´µ±È»£¬Õâ¸öËÙ¶ÈÊÇ·Ç³£¿ìµÄ£¬Èç¹ûÃ»ÓĞÒ»¶¨µÄÑÓÊ±£¬ÄÇÃ´µÃµ½µÄ¹À¼Æ¾ÍÊÇ
-      Ò»¸ö±ä»¯ºÜ¿ìµÄÄ£ÄâÁ¿¡£ËùÒÔÕâ¸öÊ±ºò¾ÍĞèÒªÊ¹ÓÃ¶¨Ê±Æ÷TIMERÁË¡£DACÔÚ³õÊ¼»¯µÄÊ±ºò£¬
-      ¿ÉÒÔÉèÖÃ³ÉÊ¹ÓÃ¶¨Ê±Æ÷´¥·¢£¬Õâ¾ÍÒâÎ¶×Å£¬µ±¶¨Ê±Æ÷ÒçÂúµÄÊ±ºò£¬¾Í»á´¥·¢DAC¹¤×÷¡£
-      ÕâÑùÒ»À´£¬¾Í¿ÉÒÔÍ¨¹ı¸Ä±ä¶¨Ê±Æ÷µÄ¶¨Ê±Ê±¼äÀ´¸Ä±äÕıÏÒ²¨µÄÖÜÆÚÁË¡£
+          é‚£ä¹ˆå¯¹äºä½¿ç”¨DMA+DAC+TIMERäº§ç”Ÿæ­£å¼¦æ³¢çš„åŸç†æˆ–è¿‡ç¨‹ï¼Œæˆ‘æœ‰è¿™æ ·ä¸€ä¸ªç®€å•çš„ç†è§£ï¼š
+      å…ˆå°†ä¸€ä¸ªå¯ä»¥ç”Ÿæˆæ­£å¼¦æ³¢çš„æ•°æ®è¡¨ä¿å­˜åœ¨é™æ€å†…å­˜ä¸­ï¼Œç„¶ååœ¨DACä»¥åŠè¿™å—å†…å­˜ä¸­é—´ä½¿
+      ç”¨DMAå»ºç«‹ä¸€ä¸ªé€šé“ï¼Œç»è¿‡ä»¥ä¸Šæ­¥éª¤ä¹‹åï¼ŒDACæ¨¡å—å°±å¯ä»¥é€šè¿‡DMAé€šé“æ‹¿å–é™æ€å†…å­˜ä¸­
+      å¯ä»¥ç”Ÿæˆæ­£å¼¦æ³¢çš„æ•°æ®ï¼Œæ‹¿å–æ•°æ®ï¼Œç„¶åç»è¿‡æ•°æ¨¡å‡†æ¢ï¼Œåœ¨å¼•è„šè¿›è¡Œè¾“å‡ºå°±å¯ä»¥å¾—åˆ°æ­£
+      å¼¦æ³¢äº†ã€‚é‚£ä¹ˆå½“ç„¶ï¼Œè¿™ä¸ªé€Ÿåº¦æ˜¯éå¸¸å¿«çš„ï¼Œå¦‚æœæ²¡æœ‰ä¸€å®šçš„å»¶æ—¶ï¼Œé‚£ä¹ˆå¾—åˆ°çš„ä¼°è®¡å°±æ˜¯
+      ä¸€ä¸ªå˜åŒ–å¾ˆå¿«çš„æ¨¡æ‹Ÿé‡ã€‚æ‰€ä»¥è¿™ä¸ªæ—¶å€™å°±éœ€è¦ä½¿ç”¨å®šæ—¶å™¨TIMERäº†ã€‚DACåœ¨åˆå§‹åŒ–çš„æ—¶å€™ï¼Œ
+      å¯ä»¥è®¾ç½®æˆä½¿ç”¨å®šæ—¶å™¨è§¦å‘ï¼Œè¿™å°±æ„å‘³ç€ï¼Œå½“å®šæ—¶å™¨æº¢æ»¡çš„æ—¶å€™ï¼Œå°±ä¼šè§¦å‘DACå·¥ä½œã€‚
+      è¿™æ ·ä¸€æ¥ï¼Œå°±å¯ä»¥é€šè¿‡æ”¹å˜å®šæ—¶å™¨çš„å®šæ—¶æ—¶é—´æ¥æ”¹å˜æ­£å¼¦æ³¢çš„å‘¨æœŸäº†ã€‚
 
-                          µçÑ¹´óĞ¡µÄÏÔÊ¾ÓÃDACÀ´´¦Àí
+                          ç”µå‹å¤§å°çš„æ˜¾ç¤ºç”¨DACæ¥å¤„ç†
 */
 
 #include "sys.h"
@@ -19,6 +19,7 @@
 #include "usart.h"
 #include "led.h"
 #include "lcd.h"
+#include "beep.h"
 //#include "dac.h"
 #include "adc.h"
 #include "waveform.h"
@@ -26,12 +27,12 @@
 #include "stm32f4xx_it.h"
 #include "key.h"
 #include "stm32f4xx.h"                  // Device header
-//void touch_task(void);  //´¥Ãş¹¦ÄÜ£¬¿ÉÌí¼Ó£¬ÕâÀïÖ»ÓĞTFTLCDËùÒÔ²»ÓÃ
-void clear_point(u16 num);//¸üĞÂÏÔÊ¾ÆÁµ±Ç°ÁĞ	
-void Set_BackGround(void);//ÉèÖÃ±³¾°
-void Lcd_DrawNetwork(void);//»­Íø¸ñ
-float get_vpp(u16 *buf);//»ñÈ¡·å·åÖµ
-void DrawOscillogram(u16* buf);//»­²¨ĞÎÍ¼
+//void touch_task(void);  //è§¦æ‘¸åŠŸèƒ½ï¼Œå¯æ·»åŠ ï¼Œè¿™é‡Œåªæœ‰TFTLCDæ‰€ä»¥ä¸ç”¨
+void clear_point(u16 num);//æ›´æ–°æ˜¾ç¤ºå±å½“å‰åˆ—	
+void Set_BackGround(void);//è®¾ç½®èƒŒæ™¯
+void Lcd_DrawNetwork(void);//ç”»ç½‘æ ¼
+float get_vpp(u16 *buf);//è·å–å³°å³°å€¼
+void DrawOscillogram(u16* buf);//ç”»æ³¢å½¢å›¾
 
 void sin_Generation(void);
 void sawtooth_Generation(void);
@@ -39,7 +40,7 @@ void triangle_Generation(void);
 void rectangle_Generation(void);
 
    u32 max_data; 
-	 u16 position=140;//²¨ĞÎÍ¼ÖĞĞÄÖá
+	 u16 position=200;//æ³¢å½¢å›¾ä¸­å¿ƒè½´
    u8	num=0;
 	 u8 runstop=1;
 	 
@@ -50,13 +51,14 @@ int main(void)
 	float Adresult = 0;
 	u8    Vpp_buff[20] = {0};
   u8 key=0;
-	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);//ÉèÖÃÏµÍ³ÖĞ¶ÏÓÅÏÈ¼¶·Ö×é2
-	delay_init(168);            //³õÊ¼»¯ÑÓÊ±º¯Êı
-	uart_init(115200);		    //³õÊ¼»¯´®¿Ú²¨ÌØÂÊÎª115200
-	LED_Init();					//³õÊ¼»¯LED
- 	LCD_Init();                 //³õÊ¼»¯LCD FSMC½Ó¿Ú
-  Adc_Init();                 //³õÊ¼»¯ADC
-	Set_BackGround();	        //ÏÔÊ¾±³¾°
+	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);//è®¾ç½®ç³»ç»Ÿä¸­æ–­ä¼˜å…ˆçº§åˆ†ç»„2
+	delay_init(168);            //åˆå§‹åŒ–å»¶æ—¶å‡½æ•°
+	uart_init(115200);		    //åˆå§‹åŒ–ä¸²å£æ³¢ç‰¹ç‡ä¸º115200
+	LED_Init();					//åˆå§‹åŒ–LED
+	BEEP_Init();         	//åˆå§‹åŒ–èœ‚é¸£å™¨ç«¯å£
+ 	LCD_Init();                 //åˆå§‹åŒ–LCD FSMCæ¥å£
+  Adc_Init();                 //åˆå§‹åŒ–ADC
+	Set_BackGround();	        //æ˜¾ç¤ºèƒŒæ™¯
 	Lcd_DrawNetwork();
 	KEY_Init();
 	LED0 = 0;
@@ -67,18 +69,21 @@ int main(void)
 		
 	 {		
 		 //void touch_task(void);
-		 DrawOscillogram(buff);//»­²¨ĞÎ
-		 Adresult = get_vpp(buff);//·å·åÖµmv		
+		 DrawOscillogram(buff);//ç”»æ³¢å½¢
+		 Adresult = get_vpp(buff);//å³°å³°å€¼mv		
   	 sprintf((char*)Vpp_buff,"Vpp = %0.3fV",Adresult);
 		 POINT_COLOR = WHITE;
-		 BACK_COLOR = BLACK;
-		 LCD_ShowString(156,201,66,12,12,Vpp_buff);
+		 BACK_COLOR = DARKBLUE;
+		 //LCD_ShowString(156,201,66,12,12,Vpp_buff);
+		 LCD_ShowString(330,425,210,24,24,Vpp_buff);
 		//runstop=KEY_Scan(0);
 //		if(runstop==1){
 	   POINT_COLOR = WHITE;
-	   LCD_ShowString(258,0,288,29,12,"STOP");
+	   //LCD_ShowString(258,0,288,29,12,"STOP");
+		 LCD_ShowString(600,425,288,29,24,"STOP");
 	   POINT_COLOR = YELLOW;
-	   LCD_ShowString(289,0,319,29,12,"RUN");
+	   //LCD_ShowString(289,0,319,29,12,"RUN");
+		 LCD_ShowString(665,425,319,29,24,"RUN");
 		 LED0 = !LED0;//}
 //else if(runstop==0)
 //{
@@ -87,61 +92,83 @@ int main(void)
 //	LCD_ShowString(289,0,319,29,12,"RUN");
 //}	
 		 
-		 key=KEY_Scan(0);		//µÃµ½¼üÖµ
+		 key=KEY_Scan(0);		//å¾—åˆ°é”®å€¼
 	   	if(key)
 		{						   
 			switch(key)
 			{				 
-				case WKUP_PRES:	//¿ØÖÆ·äÃùÆ÷
+				case WKUP_PRES:
 					sin_Generation();
+					BEEP=1;delay_ms(100);BEEP=0;
 					break;
-//				case KEY0_PRES:	//¿ØÖÆLED0·­×ª
+//				case KEY0_PRES:
 //					runstop=0;
 //					break;
-				case KEY1_PRES:	//¿ØÖÆLED1·­×ª
+				case KEY1_PRES:
 					triangle_Generation();
+				  BEEP=1;delay_ms(100);BEEP=0;
 					break;
-				case KEY2_PRES:	//Í¬Ê±¿ØÖÆLED0,LED1·­×ª
-           sawtooth_Generation();
+				case KEY2_PRES:
+          sawtooth_Generation();
+				  BEEP=1;delay_ms(100);BEEP=0;
 					break;
 			}
 		}
-		else if(key == 0)
+		else if(key == KEY0_PRES)
 		{
+			BEEP=1;delay_ms(100);BEEP=0;
 			do
 			{
 			//runstop=0;
 			//void DrawOscillogram(u16* buf);
 			POINT_COLOR = YELLOW;
-	  	LCD_ShowString(258,0,288,29,12,"STOP");
+	  	//LCD_ShowString(258,0,288,29,12,"STOP");
+			LCD_ShowString(600,425,288,29,24,"STOP");
      	POINT_COLOR = WHITE;
-			LCD_ShowString(289,0,319,29,12,"RUN");
+			//LCD_ShowString(289,0,319,29,12,"RUN");
+			LCD_ShowString(665,425,319,29,24,"RUN");
 				key=KEY_Scan(0);				
-				if(key==0||key==2||key==3||key==4)break;
+				if(key==0||key==2||key==3||key==4)
+				{
+					BEEP=1;delay_ms(100);BEEP=0;
+    			switch(key)
+			    {				 
+					case WKUP_PRES:
+						sin_Generation();
+					  break;
+				  case KEY1_PRES:
+					  triangle_Generation();
+					  break;
+				  case KEY2_PRES:
+            sawtooth_Generation();
+					  break;
+			    }
+					break;
+				}
 			}while(1);
 			
 		}
 	 } 
 }
 
-void clear_point(u16 num)//¸üĞÂÏÔÊ¾ÆÁµ±Ç°ÁĞ
+void clear_point(u16 num)//æ›´æ–°æ˜¾ç¤ºå±å½“å‰åˆ—
 {
 	u16 lie = 0; 
-	POINT_COLOR = BLACK ;
-	for(lie = 1;lie < 199;lie++)
+	POINT_COLOR = DARKBLUE ;
+	for(lie = 1;lie < 400;lie++)
 	{		
 		LCD_DrawPoint(num,lie );
 	}
-	if(!(num%50))//ÅĞ¶ÏhangÊÇ·ñÎª50µÄ±¶Êı »­ÁĞµã
+	if(!(num%50))//åˆ¤æ–­hangæ˜¯å¦ä¸º50çš„å€æ•° ç”»åˆ—ç‚¹
 	{
-		for(lie = 10;lie < 199;lie += 10)
+		for(lie = 10;lie < 400;lie += 10)
 		{		
 			LCD_Fast_DrawPoint(num ,lie,WHITE );
 		}
 	}
-	if(!(num%10))//ÅĞ¶ÏhangÊÇ·ñÎª10µÄ±¶Êı »­ĞĞµã
+	if(!(num%10))//åˆ¤æ–­hangæ˜¯å¦ä¸º10çš„å€æ•° ç”»è¡Œç‚¹
 	{
-		for(lie = 50;lie <199;lie += 50)
+		for(lie = 50;lie <400;lie += 50)
 		{		
 			LCD_Fast_DrawPoint(num ,lie,WHITE );
 		}
@@ -149,32 +176,33 @@ void clear_point(u16 num)//¸üĞÂÏÔÊ¾ÆÁµ±Ç°ÁĞ
 	POINT_COLOR = YELLOW;	
 }
 
-void DrawOscillogram(u16 *buff)//»­²¨ĞÎÍ¼
+void DrawOscillogram(u16 *buff)//ç”»æ³¢å½¢å›¾
 {
 	runstop = KEY_Scan(0);
 	
-	if(runstop==1|runstop==2|runstop==3|runstop==4)//»­ÕıÏÒ²¨
+	if(runstop==1|runstop==2|runstop==3|runstop==4)//ç”»æ­£å¼¦æ³¢
 		{
 			static u16 Ypos1 = 0,Ypos2 = 0;
 			u16 i = 0;
-			for(i = 1;i < 255;i++)//´æ´¢ADÊıÖµ
+			for(i = 1;i < 700;i++)//å­˜å‚¨ADæ•°å€¼
 				{
 					buff[i]=Get_Adc(ADC_Channel_5);
 //					delay_us(1);
 				}
-				for(i = 1;i < 255;i++)
+				for(i = 1;i < 700;i++)
 				{
 					clear_point(i);	
-					Ypos2 = position - ( buff[i] * 165 / 4096);//×ª»»×ø±ê//4096
-					if(Ypos2 >255)
-						Ypos2 =255; //³¬³ö·¶Î§²»ÏÔÊ¾
-					LCD_DrawLine (i ,Ypos1 , i+1 ,Ypos2);//²¨ĞÎÁ¬½Ó
+					Ypos2 = position - ( buff[i] * 165 / 4096);//è½¬æ¢åæ ‡//4096
+					Ypos2 = Ypos2 * 2;//çºµåæ ‡å€æ•°
+					if(Ypos2 >400)
+						Ypos2 =400; //è¶…å‡ºèŒƒå›´ä¸æ˜¾ç¤º
+					LCD_DrawLine (i ,Ypos1 , i+1 ,Ypos2);//æ³¢å½¢è¿æ¥
 				Ypos1 = Ypos2 ;
 				}
     Ypos1 = 0;	
 		}
 		
-//		else if(runstop==0)//ÔİÍ£¶¯Ì¬ÏÔÊ¾
+//		else if(runstop==0)//æš‚åœåŠ¨æ€æ˜¾ç¤º
 //		{
 //			do
 //			{
@@ -194,7 +222,7 @@ void DrawOscillogram(u16 *buff)//»­²¨ĞÎÍ¼
 		{
 //			static u16 Ypos1 = 0,Ypos2 = 0;
 //			u16 i = 0;
-//			for(i = 1;i < 255;i++)//´æ´¢ADÊıÖµ
+//			for(i = 1;i < 255;i++)//å­˜å‚¨ADæ•°å€¼
 //				{
 //					buff[i]=Get_Adc(ADC_Channel_5);
 ////					delay_us(1);
@@ -202,10 +230,10 @@ void DrawOscillogram(u16 *buff)//»­²¨ĞÎÍ¼
 //				for(i = 1;i < 255;i++)
 //				{
 //					clear_point(i);	
-//					Ypos2 = position - ( buff[i] * 165 / 4096);//×ª»»×ø±ê//4096
+//					Ypos2 = position - ( buff[i] * 165 / 4096);//è½¬æ¢åæ ‡//4096
 //					if(Ypos2 >255)
-//						Ypos2 =255; //³¬³ö·¶Î§²»ÏÔÊ¾
-//					LCD_DrawLine (i ,Ypos1 , i+1 ,Ypos2);//²¨ĞÎÁ¬½Ó
+//						Ypos2 =255; //è¶…å‡ºèŒƒå›´ä¸æ˜¾ç¤º
+//					LCD_DrawLine (i ,Ypos1 , i+1 ,Ypos2);//æ³¢å½¢è¿æ¥
 //				Ypos1 = Ypos2 ;
 //				}
 //    Ypos1 = 0;	
@@ -224,9 +252,9 @@ void DrawOscillogram(u16 *buff)//»­²¨ĞÎÍ¼
 }
 void Set_BackGround(void)
 {
- LCD_Clear(BLACK);
+ LCD_Clear(DARKBLUE);
 	POINT_COLOR = WHITE;
-	LCD_DrawRectangle(0,0,257,200);
+	LCD_DrawRectangle(0,0,700,400);
 //	POINT_COLOR = WHITE;
 //	LCD_ShowString(258,0,288,29,12,"STOP");
 //	LCD_ShowString(289,0,319,29,12,"RUN");
@@ -236,29 +264,29 @@ void Lcd_DrawNetwork(void)
 {
 	u16 index_y = 0;
 	u16 index_x = 0;	
-	POINT_COLOR = WHITE;
-	LCD_DrawRectangle(258,0,288,29);
-	POINT_COLOR = WHITE;
-	LCD_DrawRectangle(289,0,319,29);
-    //»­ÁĞµã	
-	for(index_x = 50;index_x < 255;index_x += 50)
+	//POINT_COLOR = WHITE;
+	//LCD_DrawRectangle(258,0,288,29);
+	//POINT_COLOR = WHITE;
+	//LCD_DrawRectangle(289,0,319,29);
+    //ç”»åˆ—ç‚¹	
+	for(index_x = 50;index_x < 700;index_x += 50)
 	{
-		for(index_y = 10;index_y < 199;index_y += 10)
+		for(index_y = 10;index_y < 400;index_y += 10)
 		{
 			LCD_Fast_DrawPoint(index_x,index_y,WHITE);	
 		}
 	}
-	//»­ĞĞµã
-	for(index_y = 50;index_y < 199;index_y += 50)
+	//ç”»è¡Œç‚¹
+	for(index_y = 50;index_y < 400;index_y += 50)
 	{
-		for(index_x = 10;index_x < 255;index_x += 10)
+		for(index_x = 10;index_x < 700;index_x += 10)
 		{
 			LCD_Fast_DrawPoint(index_x,index_y,WHITE);	
 		}
 	}
 }
 
-float get_vpp(u16 *buf)	   //»ñÈ¡·å·åÖµ
+float get_vpp(u16 *buf)	   //è·å–å³°å³°å€¼
 {
 	
   u32 max_data=buf[0];

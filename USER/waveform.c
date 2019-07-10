@@ -1,17 +1,17 @@
-                    //STM32 Ê¹ÓÃDMA+DAC+TIMERÊä³öÕıÏÒ²¨//
+                    //STM32 ä½¿ç”¨DMA+DAC+TIMERè¾“å‡ºæ­£å¼¦æ³¢//
 
 /* 
 
-          ÄÇÃ´¶ÔÓÚÊ¹ÓÃDMA+DAC+TIMER²úÉúÕıÏÒ²¨µÄÔ­Àí»ò¹ı³Ì£¬ÎÒÓĞÕâÑùÒ»¸ö¼òµ¥µÄÀí½â£º
-      ÏÈ½«Ò»¸ö¿ÉÒÔÉú³ÉÕıÏÒ²¨µÄÊı¾İ±í±£´æÔÚ¾²Ì¬ÄÚ´æÖĞ£¬È»ºóÔÚDACÒÔ¼°Õâ¿éÄÚ´æÖĞ¼äÊ¹
-      ÓÃDMA½¨Á¢Ò»¸öÍ¨µÀ£¬¾­¹ıÒÔÉÏ²½ÖèÖ®ºó£¬DACÄ£¿é¾Í¿ÉÒÔÍ¨¹ıDMAÍ¨µÀÄÃÈ¡¾²Ì¬ÄÚ´æÖĞ
-      ¿ÉÒÔÉú³ÉÕıÏÒ²¨µÄÊı¾İ£¬ÄÃÈ¡Êı¾İ£¬È»ºó¾­¹ıÊıÄ£×¼»»£¬ÔÚÒı½Å½øĞĞÊä³ö¾Í¿ÉÒÔµÃµ½Õı
-      ÏÒ²¨ÁË¡£ÄÇÃ´µ±È»£¬Õâ¸öËÙ¶ÈÊÇ·Ç³£¿ìµÄ£¬Èç¹ûÃ»ÓĞÒ»¶¨µÄÑÓÊ±£¬ÄÇÃ´µÃµ½µÄ¹À¼Æ¾ÍÊÇ
-      Ò»¸ö±ä»¯ºÜ¿ìµÄÄ£ÄâÁ¿¡£ËùÒÔÕâ¸öÊ±ºò¾ÍĞèÒªÊ¹ÓÃ¶¨Ê±Æ÷TIMERÁË¡£DACÔÚ³õÊ¼»¯µÄÊ±ºò£¬
-      ¿ÉÒÔÉèÖÃ³ÉÊ¹ÓÃ¶¨Ê±Æ÷´¥·¢£¬Õâ¾ÍÒâÎ¶×Å£¬µ±¶¨Ê±Æ÷ÒçÂúµÄÊ±ºò£¬¾Í»á´¥·¢DAC¹¤×÷¡£
-      ÕâÑùÒ»À´£¬¾Í¿ÉÒÔÍ¨¹ı¸Ä±ä¶¨Ê±Æ÷µÄ¶¨Ê±Ê±¼äÀ´¸Ä±äÕıÏÒ²¨µÄÖÜÆÚÁË¡£
+          é‚£ä¹ˆå¯¹äºä½¿ç”¨DMA+DAC+TIMERäº§ç”Ÿæ­£å¼¦æ³¢çš„åŸç†æˆ–è¿‡ç¨‹ï¼Œæˆ‘æœ‰è¿™æ ·ä¸€ä¸ªç®€å•çš„ç†è§£ï¼š
+      å…ˆå°†ä¸€ä¸ªå¯ä»¥ç”Ÿæˆæ­£å¼¦æ³¢çš„æ•°æ®è¡¨ä¿å­˜åœ¨é™æ€å†…å­˜ä¸­ï¼Œç„¶ååœ¨DACä»¥åŠè¿™å—å†…å­˜ä¸­é—´ä½¿
+      ç”¨DMAå»ºç«‹ä¸€ä¸ªé€šé“ï¼Œç»è¿‡ä»¥ä¸Šæ­¥éª¤ä¹‹åï¼ŒDACæ¨¡å—å°±å¯ä»¥é€šè¿‡DMAé€šé“æ‹¿å–é™æ€å†…å­˜ä¸­
+      å¯ä»¥ç”Ÿæˆæ­£å¼¦æ³¢çš„æ•°æ®ï¼Œæ‹¿å–æ•°æ®ï¼Œç„¶åç»è¿‡æ•°æ¨¡å‡†æ¢ï¼Œåœ¨å¼•è„šè¿›è¡Œè¾“å‡ºå°±å¯ä»¥å¾—åˆ°æ­£
+      å¼¦æ³¢äº†ã€‚é‚£ä¹ˆå½“ç„¶ï¼Œè¿™ä¸ªé€Ÿåº¦æ˜¯éå¸¸å¿«çš„ï¼Œå¦‚æœæ²¡æœ‰ä¸€å®šçš„å»¶æ—¶ï¼Œé‚£ä¹ˆå¾—åˆ°çš„ä¼°è®¡å°±æ˜¯
+      ä¸€ä¸ªå˜åŒ–å¾ˆå¿«çš„æ¨¡æ‹Ÿé‡ã€‚æ‰€ä»¥è¿™ä¸ªæ—¶å€™å°±éœ€è¦ä½¿ç”¨å®šæ—¶å™¨TIMERäº†ã€‚DACåœ¨åˆå§‹åŒ–çš„æ—¶å€™ï¼Œ
+      å¯ä»¥è®¾ç½®æˆä½¿ç”¨å®šæ—¶å™¨è§¦å‘ï¼Œè¿™å°±æ„å‘³ç€ï¼Œå½“å®šæ—¶å™¨æº¢æ»¡çš„æ—¶å€™ï¼Œå°±ä¼šè§¦å‘DACå·¥ä½œã€‚
+      è¿™æ ·ä¸€æ¥ï¼Œå°±å¯ä»¥é€šè¿‡æ”¹å˜å®šæ—¶å™¨çš„å®šæ—¶æ—¶é—´æ¥æ”¹å˜æ­£å¼¦æ³¢çš„å‘¨æœŸäº†ã€‚
 
-                          µçÑ¹´óĞ¡µÄÏÔÊ¾ÓÃDACÀ´´¦Àí
+                          ç”µå‹å¤§å°çš„æ˜¾ç¤ºç”¨DACæ¥å¤„ç†
 */
 
 
@@ -31,7 +31,7 @@ u16 sinTable[tableSize];//256;
 
 u8 KEY_Scan(u8 mode);
 
-//½«ÕıÏÒ²¨Êı¾İ±£´æÔÚ¾²Ì¬ÄÚ´æÖĞ
+//å°†æ­£å¼¦æ³¢æ•°æ®ä¿å­˜åœ¨é™æ€å†…å­˜ä¸­
 void sin_Generation(void)
 {
 	u16 n;
@@ -48,7 +48,7 @@ void sin_Generation(void)
 
 }
 
-//¾â³İ²¨
+//é”¯é½¿æ³¢
 void sawtooth_Generation(void)
 {
 	u16 n;
@@ -59,7 +59,7 @@ void sawtooth_Generation(void)
 }	
 
 
-//Èı½Ç²¨
+//ä¸‰è§’æ³¢
 void triangle_Generation(void)
 {
 	u16 n;
@@ -73,7 +73,7 @@ void triangle_Generation(void)
 	}
 }
 
-//¾ØĞÎ²¨
+//çŸ©å½¢æ³¢
 void rectangle_Generation(void)
 {
 	u16 n;
@@ -87,7 +87,7 @@ void rectangle_Generation(void)
 	}
 }
 
-//µ±¶¨Ê±Æ÷ÒçÂúµÄÊ±ºò£¬¾Í»á´¥·¢DAC¹¤×÷£¬ÕâÑùÒ»À´£¬¾Í¿ÉÒÔÍ¨¹ı¸Ä±ä¶¨Ê±Æ÷µÄ¶¨Ê±Ê±¼äÀ´¸Ä±äÕıÏÒ²¨µÄÖÜÆÚÁË
+//å½“å®šæ—¶å™¨æº¢æ»¡çš„æ—¶å€™ï¼Œå°±ä¼šè§¦å‘DACå·¥ä½œï¼Œè¿™æ ·ä¸€æ¥ï¼Œå°±å¯ä»¥é€šè¿‡æ”¹å˜å®šæ—¶å™¨çš„å®šæ—¶æ—¶é—´æ¥æ”¹å˜æ­£å¼¦æ³¢çš„å‘¨æœŸäº†
 void TIM6_Configuration(void)
 {
 	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM6, ENABLE);	
@@ -100,48 +100,48 @@ void TIM6_Configuration(void)
 
 void DacGPIO_Configuration(void)
 {
-	GPIO_InitTypeDef GPIO_InitStructure;//½á¹¹Ìå
+	GPIO_InitTypeDef GPIO_InitStructure;//ç»“æ„ä½“
 
-  RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOA, ENABLE);//Ê¹ÄÜGPIOAÊ±ÖÓ
+  RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOA, ENABLE);//ä½¿èƒ½GPIOAæ—¶é’Ÿ
 
-	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_4;//Ñ¡¶¨4ºÅÒı½Å,4,5¶¼¿ÉÒÔ
-	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AN;//Ä£ÄâÊäÈë
-	GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_NOPULL;//²»ÉÏÀ­£¬²»ÏÂÀ­
-	GPIO_Init(GPIOA, &GPIO_InitStructure);//È·¶¨ÎªGPIOAµÄ³õÊ¼»¯
+	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_4;//é€‰å®š4å·å¼•è„š,4,5éƒ½å¯ä»¥
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AN;//æ¨¡æ‹Ÿè¾“å…¥
+	GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_NOPULL;//ä¸ä¸Šæ‹‰ï¼Œä¸ä¸‹æ‹‰
+	GPIO_Init(GPIOA, &GPIO_InitStructure);//ç¡®å®šä¸ºGPIOAçš„åˆå§‹åŒ–
 }
 
-//ºóÔÚDACÒÔ¼°Õâ¿éÄÚ´æÖĞ¼äÊ¹ÓÃDMA½¨Á¢Ò»¸öÍ¨µÀ
+//ååœ¨DACä»¥åŠè¿™å—å†…å­˜ä¸­é—´ä½¿ç”¨DMAå»ºç«‹ä¸€ä¸ªé€šé“
 void DAC_DMA_Configuration(void)
 {
-	DAC_InitTypeDef  DAC_InitStructure;	//DAC½á¹¹Ìå
+	DAC_InitTypeDef  DAC_InitStructure;	//DACç»“æ„ä½“
 
-	DMA_InitTypeDef DMA_InitStructure;//DMA½á¹¹Ìå
+	DMA_InitTypeDef DMA_InitStructure;//DMAç»“æ„ä½“
 
-	//Ê¹ÄÜDMA1Ê±ÖÓ£¬ÔòÎÒÃÇÒªÕÒDMA1µÄÇëÇóÓ³ÉäÀ´½øĞĞÏÂÃæµÄÅäÖÃ
+	//ä½¿èƒ½DMA1æ—¶é’Ÿï¼Œåˆ™æˆ‘ä»¬è¦æ‰¾DMA1çš„è¯·æ±‚æ˜ å°„æ¥è¿›è¡Œä¸‹é¢çš„é…ç½®
 	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_DMA1, ENABLE);
 
-	RCC_APB1PeriphClockCmd(RCC_APB1Periph_DAC, ENABLE);//Ê¹ÄÜDACÊ±ÖÓ
+	RCC_APB1PeriphClockCmd(RCC_APB1Periph_DAC, ENABLE);//ä½¿èƒ½DACæ—¶é’Ÿ
 
-	DAC_InitStructure.DAC_Trigger = DAC_Trigger_T6_TRGO;//Ê¹ÓÃ´¥·¢¹¦ÄÜ
-	DAC_InitStructure.DAC_WaveGeneration = DAC_WaveGeneration_None;//²»ÓÃSTM32×Ô´øµÄ²¨ĞÎ
-	DAC_InitStructure.DAC_OutputBuffer = DAC_OutputBuffer_Disable;//Ò»°ãÉèÖÃ²»Ê¹ÓÃÊä³ö»º´æ
-	//STM32µÄDACÓĞÁ½¸öÍ¨µÀ£¬ÕâÀïÎÒÃÇÊ¹ÓÃµÄÊÇDACµÄÍ¨µÀ1£¬ËùÒÔ¶ÔDAC½øĞĞ³õÊ¼»¯
+	DAC_InitStructure.DAC_Trigger = DAC_Trigger_T6_TRGO;//ä½¿ç”¨è§¦å‘åŠŸèƒ½
+	DAC_InitStructure.DAC_WaveGeneration = DAC_WaveGeneration_None;//ä¸ç”¨STM32è‡ªå¸¦çš„æ³¢å½¢
+	DAC_InitStructure.DAC_OutputBuffer = DAC_OutputBuffer_Disable;//ä¸€èˆ¬è®¾ç½®ä¸ä½¿ç”¨è¾“å‡ºç¼“å­˜
+	//STM32çš„DACæœ‰ä¸¤ä¸ªé€šé“ï¼Œè¿™é‡Œæˆ‘ä»¬ä½¿ç”¨çš„æ˜¯DACçš„é€šé“1ï¼Œæ‰€ä»¥å¯¹DACè¿›è¡Œåˆå§‹åŒ–
 	DAC_Init(DAC_Channel_1, &DAC_InitStructure);
 
-	//DMA1ÇëÇóÓ³Éä£¬DMAµÄÊı¾İÁ÷5ºÍÍ¨µÀ7ÎªDAC1¹¦ÄÜ
-	DMA_DeInit(DMA1_Stream5);//ÉèÖÃÊı¾İÁ÷5
-	DMA_InitStructure.DMA_Channel = DMA_Channel_7;//ÉèÖÃÍ¨µÀ7  
-	//°ÑÕıÏÒ²¨µÄÊı¾İ±í±£´æÔÚ¾²Ì¬ÄÚ´æÖĞ
+	//DMA1è¯·æ±‚æ˜ å°„ï¼ŒDMAçš„æ•°æ®æµ5å’Œé€šé“7ä¸ºDAC1åŠŸèƒ½
+	DMA_DeInit(DMA1_Stream5);//è®¾ç½®æ•°æ®æµ5
+	DMA_InitStructure.DMA_Channel = DMA_Channel_7;//è®¾ç½®é€šé“7  
+	//æŠŠæ­£å¼¦æ³¢çš„æ•°æ®è¡¨ä¿å­˜åœ¨é™æ€å†…å­˜ä¸­
 	DMA_InitStructure.DMA_PeripheralBaseAddr = DAC_DHR12R1_ADDRESS;
-	DMA_InitStructure.DMA_Memory0BaseAddr = (uint32_t)&sinTable;//¶¨ÒåDMAÍâÉè»ùµØÖ·
-	DMA_InitStructure.DMA_BufferSize = tableSize;//ÉèÖÃDMA»º´æ´óĞ¡
-	//ÍâÉèÊı¾İ¿í¶È
+	DMA_InitStructure.DMA_Memory0BaseAddr = (uint32_t)&sinTable;//å®šä¹‰DMAå¤–è®¾åŸºåœ°å€
+	DMA_InitStructure.DMA_BufferSize = tableSize;//è®¾ç½®DMAç¼“å­˜å¤§å°
+	//å¤–è®¾æ•°æ®å®½åº¦
 	DMA_InitStructure.DMA_PeripheralDataSize = DMA_PeripheralDataSize_HalfWord;
 	DMA_InitStructure.DMA_MemoryDataSize = DMA_PeripheralDataSize_HalfWord;
 	DMA_InitStructure.DMA_DIR = DMA_DIR_MemoryToPeripheral;
 	DMA_InitStructure.DMA_PeripheralInc = DMA_PeripheralInc_Disable;
 	DMA_InitStructure.DMA_MemoryInc = DMA_MemoryInc_Enable;
-	//ÉèÖÃÎªÑ­»·¹¤×÷Ä£Ê½
+	//è®¾ç½®ä¸ºå¾ªç¯å·¥ä½œæ¨¡å¼
 	DMA_InitStructure.DMA_Mode = DMA_Mode_Circular;
 	DMA_InitStructure.DMA_Priority = DMA_Priority_High;
 	DMA_InitStructure.DMA_FIFOMode = DMA_FIFOMode_Disable;         
@@ -150,12 +150,12 @@ void DAC_DMA_Configuration(void)
 	DMA_InitStructure.DMA_PeripheralBurst = DMA_PeripheralBurst_Single;
 	DMA_Init(DMA1_Stream5, &DMA_InitStructure);    
 
-	DMA_Cmd(DMA1_Stream5, ENABLE);//Ê¹ÄÜDMA1Êı¾İÁ÷5
+	DMA_Cmd(DMA1_Stream5, ENABLE);//ä½¿èƒ½DMA1æ•°æ®æµ5
 
-	DAC_Cmd(DAC_Channel_1, ENABLE);//Ê¹ÄÜDACµÄÍ¨µÀ1
+	DAC_Cmd(DAC_Channel_1, ENABLE);//ä½¿èƒ½DACçš„é€šé“1
 
-	//½«DACÍ¨µÀºÍDMAÍ¨µÀ½ÓÆğÀ´
-	DAC_DMACmd(DAC_Channel_1, ENABLE);//Ê¹ÄÜDAC_DMAÍ¨µÀ1
+	//å°†DACé€šé“å’ŒDMAé€šé“æ¥èµ·æ¥
+	DAC_DMACmd(DAC_Channel_1, ENABLE);//ä½¿èƒ½DAC_DMAé€šé“1
 } 
 
 //void opt(void)
@@ -183,21 +183,21 @@ void MYDAC_Init(void)
 	DAC_DMA_Configuration();  
 //	while(1)
 //	{
-//		key=KEY_Scan(0);		//µÃµ½¼üÖµ
+//		key=KEY_Scan(0);		//å¾—åˆ°é”®å€¼
 //	   	if(key)
 //		{						   
 //			switch(key)
 //			{				 
-//				case WKUP_PRES:	//¿ØÖÆ·äÃùÆ÷
+//				case WKUP_PRES:	//æ§åˆ¶èœ‚é¸£å™¨
 //					sin_Generation();
 //					break;
-////				case KEY0_PRES:	//¿ØÖÆLED0·­×ª
+////				case KEY0_PRES:	//æ§åˆ¶LED0ç¿»è½¬
 ////					
 ////					break;
-//				case KEY1_PRES:	//¿ØÖÆLED1·­×ª
+//				case KEY1_PRES:	//æ§åˆ¶LED1ç¿»è½¬
 //					triangle_Generation();
 //					break;
-//				case KEY2_PRES:	//Í¬Ê±¿ØÖÆLED0,LED1·­×ª
+//				case KEY2_PRES:	//åŒæ—¶æ§åˆ¶LED0,LED1ç¿»è½¬
 //           sawtooth_Generation();
 //					break;
 //			}

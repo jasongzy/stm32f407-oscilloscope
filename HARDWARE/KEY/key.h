@@ -2,26 +2,26 @@
 #define __KEY_H	 
 #include "sys.h" 
 //////////////////////////////////////////////////////////////////////////////////	 
-//±¾³ÌĞòÖ»¹©Ñ§Ï°Ê¹ÓÃ£¬Î´¾­×÷ÕßĞí¿É£¬²»µÃÓÃÓÚÆäËüÈÎºÎÓÃÍ¾
-//ALIENTEK STM32F407¿ª·¢°å
-//°´¼üÊäÈëÇı¶¯´úÂë	   
-//ÕıµãÔ­×Ó@ALIENTEK
-//¼¼ÊõÂÛÌ³:www.openedv.com
-//´´½¨ÈÕÆÚ:2014/5/3
-//°æ±¾£ºV1.0
-//°æÈ¨ËùÓĞ£¬µÁ°æ±Ø¾¿¡£
-//Copyright(C) ¹ãÖİÊĞĞÇÒíµç×Ó¿Æ¼¼ÓĞÏŞ¹«Ë¾ 2014-2024
+//æœ¬ç¨‹åºåªä¾›å­¦ä¹ ä½¿ç”¨ï¼Œæœªç»ä½œè€…è®¸å¯ï¼Œä¸å¾—ç”¨äºå…¶å®ƒä»»ä½•ç”¨é€”
+//ALIENTEK STM32F407å¼€å‘æ¿
+//æŒ‰é”®è¾“å…¥é©±åŠ¨ä»£ç 	   
+//æ­£ç‚¹åŸå­@ALIENTEK
+//æŠ€æœ¯è®ºå›:www.openedv.com
+//åˆ›å»ºæ—¥æœŸ:2014/5/3
+//ç‰ˆæœ¬ï¼šV1.0
+//ç‰ˆæƒæ‰€æœ‰ï¼Œç›—ç‰ˆå¿…ç©¶ã€‚
+//Copyright(C) å¹¿å·å¸‚æ˜Ÿç¿¼ç”µå­ç§‘æŠ€æœ‰é™å…¬å¸ 2014-2024
 //All rights reserved									  
 ////////////////////////////////////////////////////////////////////////////////// 	 
 
-/*ÏÂÃæµÄ·½Ê½ÊÇÍ¨¹ıÖ±½Ó²Ù×÷¿âº¯Êı·½Ê½¶ÁÈ¡IO*/
+/*ä¸‹é¢çš„æ–¹å¼æ˜¯é€šè¿‡ç›´æ¥æ“ä½œåº“å‡½æ•°æ–¹å¼è¯»å–IO*/
 #define KEY0 		GPIO_ReadInputDataBit(GPIOE,GPIO_Pin_4) //PE4
 #define KEY1 		GPIO_ReadInputDataBit(GPIOE,GPIO_Pin_3)	//PE3 
 #define KEY2 		GPIO_ReadInputDataBit(GPIOE,GPIO_Pin_2) //PE2
 #define WK_UP 	GPIO_ReadInputDataBit(GPIOA,GPIO_Pin_0)	//PA0
 
 
-/*ÏÂÃæ·½Ê½ÊÇÍ¨¹ıÎ»´ø²Ù×÷·½Ê½¶ÁÈ¡IO*/
+/*ä¸‹é¢æ–¹å¼æ˜¯é€šè¿‡ä½å¸¦æ“ä½œæ–¹å¼è¯»å–IO*/
 /*
 #define KEY0 		PEin(4)   	//PE4
 #define KEY1 		PEin(3)		//PE3 
@@ -30,12 +30,12 @@
 */
 
 
-#define KEY0_PRES 	1
+#define KEY0_PRES 	0
 #define KEY1_PRES	2
 #define KEY2_PRES	3
 #define WKUP_PRES   4
 
-void KEY_Init(void);	//IO³õÊ¼»¯
-u8 KEY_Scan(u8);  		//°´¼üÉ¨Ãèº¯Êı	
+void KEY_Init(void);	//IOåˆå§‹åŒ–
+u8 KEY_Scan(u8);  		//æŒ‰é”®æ‰«æå‡½æ•°	
 
 #endif

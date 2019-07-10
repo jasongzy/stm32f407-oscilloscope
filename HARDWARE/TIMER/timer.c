@@ -1,43 +1,43 @@
 #include "timer.h"
 
 //////////////////////////////////////////////////////////////////////////////////	 
-//±¾³ÌĞòÖ»¹©Ñ§Ï°Ê¹ÓÃ£¬Î´¾­×÷ÕßĞí¿É£¬²»µÃÓÃÓÚÆäËüÈÎºÎÓÃÍ¾
-//ALIENTEK STM32F407¿ª·¢°å
-//¶¨Ê±Æ÷ Çı¶¯´úÂë	   
-//ÕıµãÔ­×Ó@ALIENTEK
-//¼¼ÊõÂÛÌ³:www.openedv.com
-//´´½¨ÈÕÆÚ:2014/5/4
-//°æ±¾£ºV1.0
-//°æÈ¨ËùÓĞ£¬µÁ°æ±Ø¾¿¡£
-//Copyright(C) ¹ãÖİÊĞĞÇÒíµç×Ó¿Æ¼¼ÓĞÏŞ¹«Ë¾ 2014-2024
+//æœ¬ç¨‹åºåªä¾›å­¦ä¹ ä½¿ç”¨ï¼Œæœªç»ä½œè€…è®¸å¯ï¼Œä¸å¾—ç”¨äºå…¶å®ƒä»»ä½•ç”¨é€”
+//ALIENTEK STM32F407å¼€å‘æ¿
+//å®šæ—¶å™¨ é©±åŠ¨ä»£ç 	   
+//æ­£ç‚¹åŸå­@ALIENTEK
+//æŠ€æœ¯è®ºå›:www.openedv.com
+//åˆ›å»ºæ—¥æœŸ:2014/5/4
+//ç‰ˆæœ¬ï¼šV1.0
+//ç‰ˆæƒæ‰€æœ‰ï¼Œç›—ç‰ˆå¿…ç©¶ã€‚
+//Copyright(C) å¹¿å·å¸‚æ˜Ÿç¿¼ç”µå­ç§‘æŠ€æœ‰é™å…¬å¸ 2014-2024
 //All rights reserved									  
 ////////////////////////////////////////////////////////////////////////////////// 	
-//Í¨ÓÃ¶¨Ê±Æ÷2ÖĞ¶Ï³õÊ¼»¯
-//arr£º×Ô¶¯ÖØ×°Öµ¡£
-//psc£ºÊ±ÖÓÔ¤·ÖÆµÊı
-//¶¨Ê±Æ÷Òç³öÊ±¼ä¼ÆËã·½·¨:Tout=((arr+1)*(psc+1))/Ft us.
-//Ft=¶¨Ê±Æ÷¹¤×÷ÆµÂÊ,µ¥Î»:Mhz
-//ÕâÀïÊ¹ÓÃµÄÊÇ¶¨Ê±Æ÷2!
+//é€šç”¨å®šæ—¶å™¨2ä¸­æ–­åˆå§‹åŒ–
+//arrï¼šè‡ªåŠ¨é‡è£…å€¼ã€‚
+//pscï¼šæ—¶é’Ÿé¢„åˆ†é¢‘æ•°
+//å®šæ—¶å™¨æº¢å‡ºæ—¶é—´è®¡ç®—æ–¹æ³•:Tout=((arr+1)*(psc+1))/Ft us.
+//Ft=å®šæ—¶å™¨å·¥ä½œé¢‘ç‡,å•ä½:Mhz
+//è¿™é‡Œä½¿ç”¨çš„æ˜¯å®šæ—¶å™¨2!
 void TIM2_Int_Init(u16 arr,u16 psc)
 {
 	TIM_TimeBaseInitTypeDef TIM_TimeBaseInitStructure;
 	NVIC_InitTypeDef NVIC_InitStructure;
 	
-	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2,ENABLE);  ///Ê¹ÄÜTIM2Ê±ÖÓ
+	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2,ENABLE);  ///ä½¿èƒ½TIM2æ—¶é’Ÿ
 	
-    TIM_TimeBaseInitStructure.TIM_Period = arr; 	//×Ô¶¯ÖØ×°ÔØÖµ
-	TIM_TimeBaseInitStructure.TIM_Prescaler=psc;  //¶¨Ê±Æ÷·ÖÆµ
-	TIM_TimeBaseInitStructure.TIM_CounterMode=TIM_CounterMode_Up; //ÏòÉÏ¼ÆÊıÄ£Ê½
+    TIM_TimeBaseInitStructure.TIM_Period = arr; 	//è‡ªåŠ¨é‡è£…è½½å€¼
+	TIM_TimeBaseInitStructure.TIM_Prescaler=psc;  //å®šæ—¶å™¨åˆ†é¢‘
+	TIM_TimeBaseInitStructure.TIM_CounterMode=TIM_CounterMode_Up; //å‘ä¸Šè®¡æ•°æ¨¡å¼
 	TIM_TimeBaseInitStructure.TIM_ClockDivision=TIM_CKD_DIV1; 
 	
-	TIM_TimeBaseInit(TIM2,&TIM_TimeBaseInitStructure);//³õÊ¼»¯TIM2
+	TIM_TimeBaseInit(TIM2,&TIM_TimeBaseInitStructure);//åˆå§‹åŒ–TIM2
 	
-	TIM_ITConfig(TIM2,TIM_IT_Update,ENABLE); //ÔÊĞí¶¨Ê±Æ÷2¸üĞÂÖĞ¶Ï
-	TIM_Cmd(TIM2,ENABLE); //Ê¹ÄÜ¶¨Ê±Æ÷2
+	TIM_ITConfig(TIM2,TIM_IT_Update,ENABLE); //å…è®¸å®šæ—¶å™¨2æ›´æ–°ä¸­æ–­
+	TIM_Cmd(TIM2,ENABLE); //ä½¿èƒ½å®šæ—¶å™¨2
 	
-	NVIC_InitStructure.NVIC_IRQChannel=TIM2_IRQn; //¶¨Ê±Æ÷2ÖĞ¶Ï
-	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority=0x00; //ÇÀÕ¼ÓÅÏÈ¼¶0
-	NVIC_InitStructure.NVIC_IRQChannelSubPriority=0x00; //×ÓÓÅÏÈ¼¶0
+	NVIC_InitStructure.NVIC_IRQChannel=TIM2_IRQn; //å®šæ—¶å™¨2ä¸­æ–­
+	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority=0x00; //æŠ¢å ä¼˜å…ˆçº§0
+	NVIC_InitStructure.NVIC_IRQChannelSubPriority=0x00; //å­ä¼˜å…ˆçº§0
 	NVIC_InitStructure.NVIC_IRQChannelCmd=ENABLE;
 	NVIC_Init(&NVIC_InitStructure);
 	
